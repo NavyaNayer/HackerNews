@@ -95,15 +95,22 @@ function App() {
               </main>
               <footer className="py-6 px-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="container mx-auto text-center">
-                  <div className="mb-4 flex flex-wrap justify-center gap-5 text-base font-semibold">
-                    <a href="https://news.ycombinator.com/newsguidelines.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Guidelines</a>
-                    <a href="https://news.ycombinator.com/newsfaq.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">FAQ</a>
-                    <a href="https://news.ycombinator.com/lists" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Lists</a>
-                    <a href="https://github.com/HackerNews/API" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">API</a>
-                    <a href="https://news.ycombinator.com/security.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Security</a>
-                    <a href="https://news.ycombinator.com/legal" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Legal</a>
-                    <a href="https://www.ycombinator.com/apply/" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Apply to YC</a>
-                    <a href="https://news.ycombinator.com/contact" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Contact</a>
+                  <div className="mb-4 flex flex-wrap justify-center gap-0 text-base font-semibold">
+                    <a href="https://news.ycombinator.com/newsguidelines.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">Guidelines</a>
+                    <span className="text-gray-400 select-none">|</span>
+                    <a href="https://news.ycombinator.com/newsfaq.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">FAQ</a>
+                    <span className="text-gray-400 select-none">|</span>
+                    <a href="https://news.ycombinator.com/lists" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">Lists</a>
+                    <span className="text-gray-400 select-none">|</span>
+                    <a href="https://github.com/HackerNews/API" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">API</a>
+                    <span className="text-gray-400 select-none">|</span>
+                    <a href="https://news.ycombinator.com/security.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">Security</a>
+                    <span className="text-gray-400 select-none">|</span>
+                    <a href="https://news.ycombinator.com/legal" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">Legal</a>
+                    <span className="text-gray-400 select-none">|</span>
+                    <a href="https://www.ycombinator.com/apply/" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">Apply to YC</a>
+                    <span className="text-gray-400 select-none">|</span>
+                    <a href="https://news.ycombinator.com/contact" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg px-3">Contact</a>
                   </div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     A reimagined Hacker News experience
