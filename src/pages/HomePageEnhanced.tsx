@@ -29,7 +29,22 @@ export default function HomePageEnhanced({ type = 'top' }: HomePageProps) {
   );
 
   // Apply filters and sorting
-  const filteredStories = stories ? filterStories(stories, filterOption) : [];
+  let filteredStories = stories ? filterStories(stories, filterOption) : [];
+
+  // Time cutoff support for "Go back a day/month/year"
+  // Only apply cutoff if a special sort option is selected
+  const timeCutoff = (window as any).__storyTimeCutoff;
+  if (
+    (sortOption === 'time' || sortOption === 'score' || sortOption === 'comments' || sortOption === 'oldest') &&
+    timeCutoff &&
+    Array.isArray(filteredStories)
+  ) {
+    filteredStories = filteredStories.filter(story => story.time >= timeCutoff);
+  } else if (!timeCutoff && (window as any).__storyTimeCutoff) {
+    // If cutoff is cleared, remove it from window
+    delete (window as any).__storyTimeCutoff;
+  }
+
   const sortedStories = sortStories(filteredStories, sortOption);
   const displayedStories = sortedStories.slice(0, page * pageSize);
   const hasMore = sortedStories.length > page * pageSize;
@@ -140,4 +155,3 @@ export default function HomePageEnhanced({ type = 'top' }: HomePageProps) {
     </motion.div>
   );
 }
- 

@@ -114,7 +114,7 @@ export default function StoryFilters({
                   <button
                     key={option.value}
                     onClick={() => {
-                      onSortChange(option.value);
+                      onSortChange(option.value as SortOption);
                       setIsSortOpen(false);
                     }}
                     className="flex items-center justify-between w-full px-4 py-2 text-sm text-left hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -131,4 +131,3 @@ export default function StoryFilters({
     </div>
   );
 }
- 

@@ -70,7 +70,7 @@ export default function Navbar({ stories }: NavbarProps) {
   };
 
   return (
-    <nav className="sticky top-0 z-50 glassmorphism px-4 py-3 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 bg-[#f8fafc] dark:bg-dark-200 px-4 py-3 flex items-center justify-between">
       <div className="flex items-center">
         <Link to="/" className="flex items-center">
           <Code className="text-primary dark:text-primary-dark mr-2" size={28} />
@@ -97,6 +97,12 @@ export default function Navbar({ stories }: NavbarProps) {
               <span className="ml-1">{item.label}</span>
             </Link>
           ))}
+          <Link
+            to="/login"
+            className="ml-2 px-3 py-2 rounded-md bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
+          >
+            Login / Signup
+          </Link>
         </div>
 
         <AccessibilityMenu 
@@ -122,6 +128,12 @@ export default function Navbar({ stories }: NavbarProps) {
           onTextToSpeechToggle={setTextToSpeechEnabled}
         />
         <ThemeToggle />
+        <Link
+          to="/login"
+          className="ml-2 px-3 py-2 rounded-md bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
+        >
+          Login / Signup
+        </Link>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 ml-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -154,10 +166,16 @@ export default function Navbar({ stories }: NavbarProps) {
                 <span className="ml-2">{item.label}</span>
               </Link>
             ))}
+            <Link
+              to="/login"
+              className="flex items-center px-4 py-3 rounded-md bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Login / Signup
+            </Link>
           </div>
         </div>
       )}
     </nav>
   );
 }
- 

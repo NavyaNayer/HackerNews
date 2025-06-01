@@ -15,6 +15,7 @@ const HomePage = lazy(() => import('./pages/HomePageEnhanced'));
 const StoryPage = lazy(() => import('./pages/StoryPage'));
 const SavedStoriesPage = lazy(() => import('./pages/SavedStoriesPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
 
 function App() {
   // Fetch all stories for search functionality
@@ -86,6 +87,7 @@ function App() {
                       <Route path="/jobs" element={<HomePage type="job" />} />
                       <Route path="/saved" element={<SavedStoriesPage />} />
                       <Route path="/story/:id" element={<StoryPage />} />
+                      <Route path="/login" element={<LoginPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </Suspense>
@@ -93,16 +95,19 @@ function App() {
               </main>
               <footer className="py-6 px-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="container mx-auto text-center">
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    HackerNews - A reimagined Hacker News experience
-                  </p>
-                  <div className="mt-2 flex justify-center">
-                    <img 
-                      src="https://images.unsplash.com/photo-1475070929565-c985b496cb9f?ixid=M3w3MjUzNDh8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNoJTIwaW50ZXJmYWNlJTIwd2l0aCUyMHNlYXJjaCUyMGJhciUyMGRhcmslMjBtb2RlfGVufDB8fHx8MTc0ODc3MjQwOXww&ixlib=rb-4.1.0&fit=fillmax&h=400&w=800" 
-                      alt="Modern tech interface" 
-                      className="h-8 w-auto rounded"
-                    />
+                  <div className="mb-4 flex flex-wrap justify-center gap-5 text-base font-semibold">
+                    <a href="https://news.ycombinator.com/newsguidelines.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Guidelines</a>
+                    <a href="https://news.ycombinator.com/newsfaq.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">FAQ</a>
+                    <a href="https://news.ycombinator.com/lists" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Lists</a>
+                    <a href="https://github.com/HackerNews/API" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">API</a>
+                    <a href="https://news.ycombinator.com/security.html" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Security</a>
+                    <a href="https://news.ycombinator.com/legal" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Legal</a>
+                    <a href="https://www.ycombinator.com/apply/" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Apply to YC</a>
+                    <a href="https://news.ycombinator.com/contact" target="_blank" rel="noopener noreferrer" className="hover:underline text-primary text-lg">Contact</a>
                   </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    A reimagined Hacker News experience
+                  </p>
                 </div>
               </footer>
             </div>
@@ -115,4 +120,3 @@ function App() {
 }
 
 export default App;
- 
