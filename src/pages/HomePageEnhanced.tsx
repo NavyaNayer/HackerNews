@@ -83,8 +83,6 @@ export default function HomePageEnhanced({ type = 'top' }: HomePageProps) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      <a href="#main-content" className="skip-link">Skip to main content</a>
-      
       {type === 'top' && <Header />}
       
       <div className="container mx-auto px-4 py-6">
@@ -123,7 +121,7 @@ export default function HomePageEnhanced({ type = 'top' }: HomePageProps) {
           </div>
         ) : (
           <>
-            <div id="main-content" className="space-y-4">
+            <div className="space-y-4">
               {/* All stories with consistent styling */}
               {displayedStories.map((story) => (
                 <StoryCardEnhanced 

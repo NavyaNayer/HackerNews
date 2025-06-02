@@ -40,7 +40,17 @@ async function fetchArticleContent(url: string): Promise<string> {
  * Generates a summary using Llama 3 through our proxy
  */
 export async function generateSummary(story: Story): Promise<string> {
-  // Fetch article content if URL is available
+  // For Ask HN stories, use the text content directly
+  if (story.type === 'story' && story.text) {
+    const lines = story.text
+      .split('\n')
+      .map(line => line.trim())
+      .filter(Boolean);
+    // Return first two lines truncated to 220 characters
+    return lines.slice(0, 2).join(' ').slice(0, 220);
+  }
+
+  // For other stories, continue with existing URL content fetching
   const articleContent = story.url ? await fetchArticleContent(story.url) : '';
   const contentToAnalyze = articleContent || story.title;
   // If we have article content, return the first few lines as the description
