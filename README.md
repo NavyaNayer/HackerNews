@@ -21,10 +21,9 @@ This redesign rethinks the UX while staying true to the core values of simplicit
 
 | 🧓 **Old Hacker News** | 🚀 **Reimagined HackerNews** |
 |------------------------|------------------------------|
-| ![Old Hacker News]![image](https://github.com/user-attachments/assets/2f6ee547-d153-432f-ac83-6fa0860320f8)
- | ![New HackerNews]![after_hn](https://github.com/user-attachments/assets/34b2c761-b267-4c7d-8775-a116a52db189)
- |
-
+| ![Old Hacker News](![before_hn](https://github.com/user-attachments/assets/359f9242-3037-4687-836b-ab1a3bc2fa39)
+) | ![New HackerNews](![image](https://github.com/user-attachments/assets/694bca9b-0e60-4b04-9999-2824cf6d73e3)
+) |
 ## 🔑 Key Features
 
 ### 🧑‍💻 Modern, Accessible UI
