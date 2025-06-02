@@ -1,6 +1,6 @@
 # Reimagined Hacker News
 
-A complete modern redesign of the iconic [Hacker News](https://news.ycombinator.com/) platform — built in just **72 hours** for a hackathon challenge. This project preserves the content-first, fast-loading spirit of Hacker News while introducing a cleaner, more responsive, and accessible user experience.
+A complete modern redesign of the iconic [Hacker News](https://news.ycombinator.com/) platform built in just **72 hours** for a hackathon challenge. This project preserves the content-first, fast-loading spirit of Hacker News while introducing a cleaner, more responsive, and accessible user experience.
 
 🌐 **Live Site**: [https://hacker-news-snowy-ten.vercel.app/](https://hacker-news-snowy-ten.vercel.app/)  
 🎥 **Demo Video**: [Watch on YouTube](https://www.youtube.com/watch?v=DxKM6Q_vEuE)
