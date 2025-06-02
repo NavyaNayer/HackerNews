@@ -121,9 +121,7 @@ export default function StoryPage() {
       setIsSaved(false);
     } else {
       saveStory({
-        id: story.id,
-        title: story.title,
-        url: story.url,
+        ...story,
         savedAt: Math.floor(Date.now() / 1000)
       });
       setIsSaved(true);

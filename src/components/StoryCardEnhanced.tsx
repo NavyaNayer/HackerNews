@@ -155,138 +155,136 @@ export default function StoryCardEnhanced({ story, highlight }: StoryCardProps) 
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.4 }}
-      className="card mb-4 hover:shadow-lg transition-all duration-300 overflow-hidden border-l-4 border-primary dark:border-primary-dark"
+      className="card mb-4 hover:shadow-lg transition-all duration-300 overflow-hidden border-l-4 border-primary dark:border-primary-dark min-h-[220px] max-h-[260px] flex"
+      style={{ height: '240px' }}
     >
-      <div className="p-4">
-        <div className="flex">
-          <div className="mr-3 flex flex-col items-center">
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={handleVote}
-              className={`p-1 rounded-md transition-colors ${
-                voted ? 'bg-primary bg-opacity-10 text-primary dark:text-primary-dark' : 'hover:bg-gray-100 dark:hover:bg-gray-700'
-              }`}
-              aria-label="Upvote"
-            >
-              <ArrowUp size={20} className={voted ? 'fill-current' : ''} />
-            </motion.button>
-            <span className={`text-sm font-medium mt-1 ${scoreClass}`}>
-              {localScore}
+      <div className="p-4 flex w-full">
+        <div className="mr-3 flex flex-col items-center">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={handleVote}
+            className={`p-1 rounded-md transition-colors ${
+              voted ? 'bg-primary bg-opacity-10 text-primary dark:text-primary-dark' : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+            aria-label="Upvote"
+          >
+            <ArrowUp size={20} className={voted ? 'fill-current' : ''} />
+          </motion.button>
+          <span className={`text-sm font-medium mt-1 ${scoreClass}`}>
+            {localScore}
+          </span>
+        </div>
+        
+        <div className="flex-1 flex flex-col">
+          <div className="flex items-center mb-1 gap-2">
+            <span className={`text-xs px-2 py-0.5 rounded-full ${tag.color}`}>
+              {tag.name}
             </span>
+            {isHot && (
+              <span className="text-xs px-2 py-0.5 rounded-full bg-primary bg-opacity-10 text-primary dark:text-primary-dark flex items-center">
+                <Zap size={12} className="mr-1" /> Hot
+              </span>
+            )}
           </div>
           
-          <div className="flex-1">
-            <div className="flex items-center mb-1 gap-2">
-              <span className={`text-xs px-2 py-0.5 rounded-full ${tag.color}`}>
-                {tag.name}
-              </span>
-              {isHot && (
-                <span className="text-xs px-2 py-0.5 rounded-full bg-primary bg-opacity-10 text-primary dark:text-primary-dark flex items-center">
-                  <Zap size={12} className="mr-1" /> Hot
-                </span>
-              )}
-            </div>
-            
-            <h2 className="font-mono text-lg font-semibold mb-1 group">
-              <a 
-                href={story.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-primary dark:hover:text-primary-dark"
-              >
-                {highlight ? highlightText(story.title, highlight) : story.title}
-                <span className="w-0 group-hover:w-full h-0.5 bg-primary dark:bg-primary-dark block transition-all duration-300 origin-left"></span>
-              </a>
-            </h2>
-            
-            <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
-              {story.url && (
-                <span className="flex items-center mr-3">
-                  <LinkIcon size={14} className="mr-1" />
-                  <a 
-                    href={story.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {getDomain(story.url)}
-                  </a>
-                </span>
-              )}
-              <span>by {story.by}</span>
-              <span className="mx-2">•</span>
-              <span>{formatTime(story.time)}</span>
-              
-              <div className="flex items-center ml-auto">
-                <button 
-                  onClick={handleRead}
-                  className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                  aria-label={isReading ? "Stop reading" : "Read aloud"}
+          <h2 className="font-mono text-lg font-semibold mb-1 group">
+            <a 
+              href={story.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-primary dark:hover:text-primary-dark"
+            >
+              {highlight ? highlightText(story.title, highlight) : story.title}
+              <span className="w-0 group-hover:w-full h-0.5 bg-primary dark:bg-primary-dark block transition-all duration-300 origin-left"></span>
+            </a>
+          </h2>
+          
+          <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
+            {story.url && (
+              <span className="flex items-center mr-3">
+                <LinkIcon size={14} className="mr-1" />
+                <a 
+                  href={story.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:underline"
                 >
-                  {isReading ? <VolumeX size={16} /> : <Volume2 size={16} />}
-                </button>
-              </div>
-            </div>
-            
-            {summary && (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                className="mb-3 text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-3 rounded-md"
-              >
-                {summary}
-              </motion.div>
+                  {getDomain(story.url)}
+                </a>
+              </span>
             )}
+            <span>by {story.by}</span>
+            <span className="mx-2">•</span>
+            <span>{formatTime(story.time)}</span>
             
-            {isLoading && (
-              <div className="mb-3 text-sm text-gray-500 dark:text-gray-400 flex items-center">
-                <div className="w-4 h-4 border-2 border-t-primary border-gray-200 dark:border-gray-700 rounded-full animate-spin mr-2"></div>
-                Generating summary...
-              </div>
-            )}
-            
-            <div className="flex items-center mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
-              <Link 
-                to={`/story/${story.id}`}
-                className="flex items-center mr-4 text-sm hover:text-primary dark:hover:text-primary-dark transition-colors"
-              >
-                <MessageSquare size={16} className="mr-1" />
-                {story.descendants || 0} comments
-              </Link>
-              
-              <div className="flex space-x-1 ml-auto">
-                {reactions.map(emoji => (
-                  <motion.button
-                    key={emoji}
-                    whileTap={{ scale: 0.85 }}
-                    onClick={() => handleReaction(emoji)}
-                    className={`p-1.5 text-sm rounded-full transition-colors ${
-                      reaction === emoji 
-                        ? 'bg-primary bg-opacity-10 text-primary dark:text-primary-dark' 
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-700'
-                    }`}
-                    aria-label={`React with ${emoji}`}
-                  >
-                    {emoji} {reactionCounts[emoji] > 0 && <span className="ml-1 text-xs">{reactionCounts[emoji]}</span>}
-                  </motion.button>
-                ))}
-              </div>
-              
+            <div className="flex items-center ml-auto">
               <button 
-                onClick={handleToggleSave}
-                className={`ml-3 p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
-                  isSaved ? 'text-primary dark:text-primary-dark' : ''
-                }`}
-                aria-label={isSaved ? "Unsave story" : "Save story"}
+                onClick={handleRead}
+                className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                aria-label={isReading ? "Stop reading" : "Read aloud"}
               >
-                {isSaved ? <Check size={16} /> : <Bookmark size={16} />}
+                {isReading ? <VolumeX size={16} /> : <Volume2 size={16} />}
               </button>
             </div>
+          </div>
+          
+          {summary && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="mb-3 text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-3 rounded-md line-clamp-3 flex-1"
+            >
+              {summary}
+            </motion.div>
+          )}
+          
+          {isLoading && (
+            <div className="mb-3 text-sm text-gray-500 dark:text-gray-400 flex items-center">
+              <div className="w-4 h-4 border-2 border-t-primary border-gray-200 dark:border-gray-700 rounded-full animate-spin mr-2"></div>
+              Generating summary...
+            </div>
+          )}
+          
+          <div className="flex items-center mt-3 pt-3 border-t border-gray-100 dark:border-gray-700">
+            <Link 
+              to={`/story/${story.id}`}
+              className="flex items-center mr-4 text-sm hover:text-primary dark:hover:text-primary-dark transition-colors"
+            >
+              <MessageSquare size={16} className="mr-1" />
+              {story.descendants || 0} comments
+            </Link>
+            
+            <div className="flex space-x-1 ml-auto">
+              {reactions.map(emoji => (
+                <motion.button
+                  key={emoji}
+                  whileTap={{ scale: 0.85 }}
+                  onClick={() => handleReaction(emoji)}
+                  className={`p-1.5 text-sm rounded-full transition-colors ${
+                    reaction === emoji 
+                      ? 'bg-primary bg-opacity-10 text-primary dark:text-primary-dark' 
+                      : 'hover:bg-gray-100 dark:hover:bg-gray-700'
+                  }`}
+                  aria-label={`React with ${emoji}`}
+                >
+                  {emoji} {reactionCounts[emoji] > 0 && <span className="ml-1 text-xs">{reactionCounts[emoji]}</span>}
+                </motion.button>
+              ))}
+            </div>
+            
+            <button 
+              onClick={handleToggleSave}
+              className={`ml-3 p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
+                isSaved ? 'text-primary dark:text-primary-dark' : ''
+              }`}
+              aria-label={isSaved ? "Unsave story" : "Save story"}
+            >
+              {isSaved ? <Check size={16} /> : <Bookmark size={16} />}
+            </button>
           </div>
         </div>
       </div>
     </motion.div>
   );
 }
- 

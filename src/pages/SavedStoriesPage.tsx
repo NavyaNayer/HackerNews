@@ -3,24 +3,34 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { formatTime, getDomain } from '../api';
 import { useSavedStories } from '../context/SavedStoriesContext';
-import { Bookmark, Link as LinkIcon, Trash, ArrowLeft, Search, Calendar } from 'lucide-react';
+import { Bookmark, Link as LinkIcon, Trash, ArrowLeft, Search, Calendar, XCircle } from 'lucide-react';
 
 export default function SavedStoriesPage() {
   const { savedStories, removeSavedStory } = useSavedStories();
   const [searchTerm, setSearchTerm] = useState('');
-  
+  const [confirmId, setConfirmId] = useState<number | null>(null);
+
   const filteredStories = searchTerm 
     ? savedStories.filter(story => 
         story.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : savedStories;
-  
+
   const handleRemove = (id: number) => {
-    if (window.confirm('Are you sure you want to remove this saved story?')) {
-      removeSavedStory(id);
+    setConfirmId(id);
+  };
+
+  const handleConfirmRemove = () => {
+    if (confirmId !== null) {
+      removeSavedStory(confirmId);
+      setConfirmId(null);
     }
   };
-  
+
+  const handleCancelRemove = () => {
+    setConfirmId(null);
+  };
+
   return (
     <div className="container mx-auto px-4 py-6">
       <Link to="/" className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 mb-4">
@@ -77,6 +87,31 @@ export default function SavedStoriesPage() {
               </Link>
             </>
           )}
+        </div>
+      )}
+      
+      {/* Confirmation Modal */}
+      {confirmId !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-8 max-w-xs w-full text-center border border-gray-200 dark:border-gray-700">
+            <XCircle size={40} className="mx-auto mb-3 text-red-500" />
+            <h2 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-100">Remove Saved Story?</h2>
+            <p className="mb-4 text-gray-500 dark:text-gray-400">Are you sure you want to remove this saved story?</p>
+            <div className="flex justify-center gap-3">
+              <button
+                onClick={handleConfirmRemove}
+                className="px-4 py-2 rounded bg-red-500 text-white font-medium hover:bg-red-600 transition-colors"
+              >
+                Remove
+              </button>
+              <button
+                onClick={handleCancelRemove}
+                className="px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
       )}
       
@@ -152,4 +187,3 @@ export default function SavedStoriesPage() {
     </div>
   );
 }
- 

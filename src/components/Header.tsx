@@ -36,7 +36,7 @@ export default function Header() {
             Hacker<span className="text-primary-dark">News</span>
           </h1>
           
-          <p className="text-gray-200 text-lg max-w-xl mb-6">
+          <p className="text-white text-lg max-w-xl mb-6">
             A modern, accessible reimagining of Hacker News with AI-powered summaries and enhanced features.
           </p>
           
@@ -62,11 +62,10 @@ function CategoryButton({ icon, text, path }: CategoryButtonProps) {
   return (
     <a 
       href={path}
-      className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-200"
+      className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-200 text-white"
     >
       {icon}
       <span>{text}</span>
     </a>
   );
 }
- 

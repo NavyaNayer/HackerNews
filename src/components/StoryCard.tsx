@@ -141,9 +141,10 @@ export default function StoryCard({ story, highlight }: StoryCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="card p-4 mb-4 hover:shadow-lg transition-all duration-300 border-l-4 border-primary dark:border-primary-dark"
+      className="card p-4 mb-4 hover:shadow-lg transition-all duration-300 border-l-4 border-primary dark:border-primary-dark min-h-[220px] max-h-[260px] flex"
+      style={{ height: '240px' }}
     >
-      <div className="flex">
+      <div className="flex w-full">
         <div className="mr-3 flex flex-col items-center">
           <motion.button
             whileTap={{ scale: 0.9 }}
@@ -158,7 +159,7 @@ export default function StoryCard({ story, highlight }: StoryCardProps) {
           <span className="text-sm font-medium mt-1">{localScore}</span>
         </div>
         
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col">
           <h2 className="font-mono text-lg font-semibold mb-1 group">
             <a 
               href={story.url} 
@@ -199,7 +200,7 @@ export default function StoryCard({ story, highlight }: StoryCardProps) {
           </div>
           
           {summary && (
-            <div className="mb-3 text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-2 rounded-md">
+            <div className="mb-3 text-sm text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-800 p-2 rounded-md line-clamp-3 flex-1">
               {summary}
             </div>
           )}
@@ -264,4 +265,3 @@ export default function StoryCard({ story, highlight }: StoryCardProps) {
     </motion.div>
   );
 }
- 

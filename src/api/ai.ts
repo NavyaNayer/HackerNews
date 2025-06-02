@@ -40,43 +40,20 @@ async function fetchArticleContent(url: string): Promise<string> {
  * Generates a summary using Llama 3 through our proxy
  */
 export async function generateSummary(story: Story): Promise<string> {
-  try {
-    // Fetch article content if URL is available
-    const articleContent = story.url ? await fetchArticleContent(story.url) : '';
-    
-    // Use article content or fallback to title
-    const contentToAnalyze = articleContent || story.title;
-    
-    // Using Meta's Llama 3.3 model via proxy
-    const external_api_url = "https://api.together.xyz/v1/completions";
-    const response = await fetch(`https://hooks.jdoodle.net/proxy?url=${external_api_url}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
-        prompt: `<|begin_of_text|><|system|>
-You are an assistant that generates very concise, accurate 1-2 sentence summaries of tech news articles based on article content or titles. Keep responses under 120 characters and focus on factual information.
-<|user|>
-Generate a very concise, accurate 1-2 sentence summary of this tech article:
-"${contentToAnalyze.substring(0, 4000)}"
-<|assistant|>`,
-        max_tokens: 60,
-        temperature: 0.5,
-        top_p: 0.9
-      })
-    });
-    
-    const data = await response.json();
-    if (data.choices && data.choices.length > 0) {
-      return data.choices[0].text.trim();
-    }
-    return generateFallbackSummary(story.title);
-  } catch (error) {
-    console.error('Error generating summary:', error);
-    return generateFallbackSummary(story.title);
+  // Fetch article content if URL is available
+  const articleContent = story.url ? await fetchArticleContent(story.url) : '';
+  const contentToAnalyze = articleContent || story.title;
+  // If we have article content, return the first few lines as the description
+  if (articleContent) {
+    const lines = articleContent
+      .split('\n')
+      .map(line => line.trim())
+      .filter(Boolean);
+    // Truncate to 220 characters for card consistency
+    return lines.slice(0, 2).join(' ').slice(0, 220);
   }
+  // If no article content, fallback to title or fallback summary
+  return generateFallbackSummary(story.title);
 }
 
 /**
@@ -121,4 +98,3 @@ export async function getStorySummary(story: Story): Promise<string> {
     return "Unable to generate summary at this time.";
   }
 }
- 
