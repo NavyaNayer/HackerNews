@@ -17,6 +17,13 @@ Hacker News is a beloved hub for tech discussions, but its minimal UI lacks mode
 This redesign rethinks the UX while staying true to the core values of simplicity and speed.
 
 ---
+## 📸 Before vs After
+
+| 🧓 **Old Hacker News** | 🚀 **Reimagined HackerNews** |
+|------------------------|------------------------------|
+| ![Old Hacker News]![image](https://github.com/user-attachments/assets/2f6ee547-d153-432f-ac83-6fa0860320f8)
+ | ![New HackerNews]![after_hn](https://github.com/user-attachments/assets/34b2c761-b267-4c7d-8775-a116a52db189)
+ |
 
 ## 🔑 Key Features
 
