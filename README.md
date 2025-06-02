@@ -20,8 +20,8 @@ This redesign rethinks the UX while staying true to the core values of simplicit
 ## 📸 Before vs After
 
 
-| ![Old Hacker News](https://github.com/user-attachments/assets/941428d5-0d95-4ddc-961b-86c8d3828f5c)
- | ![New HackerNews](https://github.com/user-attachments/assets/1ceff7ad-1eae-4ef3-a4e1-0884110af94b)
+ ![Old Hacker News](https://github.com/user-attachments/assets/941428d5-0d95-4ddc-961b-86c8d3828f5c)
+  ![New HackerNews](https://github.com/user-attachments/assets/1ceff7ad-1eae-4ef3-a4e1-0884110af94b)
  
 ## 🔑 Key Features
 
