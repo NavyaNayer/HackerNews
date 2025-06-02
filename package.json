@@ -8,7 +8,7 @@
       "build": "tsc && vite build",
       "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
       "preview": "vite preview",
-      "postinstall": "chmod +x node_modules/.bin/tsc"
+      "postinstall": "chmod +x node_modules/.bin/tsc node_modules/.bin/vite"
    },
    "dependencies": {
       "framer-motion": "^10.16.4",
