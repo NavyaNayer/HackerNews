@@ -30,6 +30,18 @@ export default function Navbar({ stories }: NavbarProps) {
   );
 
   useEffect(() => {
+    // Apply font size to html element using Tailwind's text-[size] classes
+    document.documentElement.classList.remove('text-xs', 'text-sm', 'text-base', 'text-lg');
+    switch (fontSize) {
+      case 'small':
+        document.documentElement.classList.add('text-sm');
+        break;
+      case 'large':
+        document.documentElement.classList.add('text-lg');
+        break;
+      default:
+        document.documentElement.classList.add('text-base');
+    }
     document.documentElement.setAttribute('data-font-size', fontSize);
     localStorage.setItem('fontSize', fontSize);
   }, [fontSize]);

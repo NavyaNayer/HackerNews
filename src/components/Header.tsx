@@ -1,6 +1,5 @@
 import  { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Zap, MessageCircle, Image, Briefcase, Code } from 'lucide-react';
 
 export default function Header() {
   const { scrollY } = useScroll();
@@ -39,33 +38,8 @@ export default function Header() {
           <p className="text-white text-lg max-w-xl mb-6">
             A modern, accessible reimagining of Hacker News with AI-powered summaries and enhanced features.
           </p>
-          
-          <div className="flex flex-wrap gap-3">
-            <CategoryButton icon={<Zap size={16} />} text="Trending" path="/" />
-            <CategoryButton icon={<MessageCircle size={16} />} text="Ask" path="/ask" />
-            <CategoryButton icon={<Image size={16} />} text="Show" path="/show" />
-            <CategoryButton icon={<Briefcase size={16} />} text="Jobs" path="/jobs" />
-          </div>
         </motion.div>
       </div>
     </motion.div>
-  );
-}
-
-interface CategoryButtonProps {
-  icon: React.ReactNode;
-  text: string;
-  path: string;
-}
-
-function CategoryButton({ icon, text, path }: CategoryButtonProps) {
-  return (
-    <a 
-      href={path}
-      className="flex items-center space-x-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full transition-all duration-200 text-white"
-    >
-      {icon}
-      <span>{text}</span>
-    </a>
   );
 }
